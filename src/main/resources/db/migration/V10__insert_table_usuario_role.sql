@@ -1,0 +1,1 @@
+INSERT INTO usuario_role (id, usuario_id, role_id) VALUES (2,2,1);
