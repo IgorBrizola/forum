@@ -19,7 +19,7 @@ class JWTUtil(
     @Value("\${jwt.secret}")
     private var secret: String = "2a12Dpr9yBjZksrrC34hnQEG1uDyF5HKckz3Cob4j5md1Jl3jXPF1ejzi"
 
-    private val expiration: Long = 2300302402340
+    private val expiration: Long = 120000
 
     private val key = Keys.hmacShaKeyFor(secret.toByteArray(StandardCharsets.UTF_8))
 
