@@ -8,7 +8,7 @@
 		<version>3.3.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.forum</groupId>
+	<groupId>br.com.project</groupId>
 	<artifactId>forum</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>forum</name>
@@ -18,6 +18,19 @@
 		<kotlin.version>2.0.0</kotlin.version>
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.testcontainers</groupId>
+				<artifactId>testcontainers-bom</artifactId>
+				<version>1.20.1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -123,10 +136,49 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>io.mockk</groupId>
+			<artifactId>mockk</artifactId>
+			<version>1.12.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.26.3</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>mysql</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
-		<sourceDirectory>src/main/kotlin</sourceDirectory>
+		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -139,6 +191,7 @@
 					<compilerPlugins>
 						<plugin>jpa</plugin>
 						<plugin>spring</plugin>
+						<plugin>no-arg</plugin>
 					</compilerPlugins>
 					<args>
 						<arg>-Xjsr305=strict</arg>
