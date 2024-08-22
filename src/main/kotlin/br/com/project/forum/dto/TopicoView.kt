@@ -3,6 +3,7 @@ package br.com.project.forum.dto
 import br.com.project.forum.model.StatusTopico
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
+import java.io.Serializable
 import java.time.LocalDate
 import java.time.LocalDateTime
 
@@ -15,4 +16,4 @@ data class TopicoView(
     val status: StatusTopico,
     val dataCriacao: LocalDateTime,
     val dataAlteracao: LocalDate?
-)
+): Serializable
