@@ -30,7 +30,7 @@ class TopicoControllerTest: DatabaseContainerConfiguration() {
     private lateinit var jwtUtil: JWTUtil
 
     companion object{
-        private const val RECURSO = "/topicos"
+        private const val RECURSO = "/topico"
         private const val RECURSO_ID = RECURSO.plus("/%s")
     }
 
