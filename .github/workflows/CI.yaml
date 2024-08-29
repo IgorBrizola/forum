@@ -3,27 +3,29 @@ name: CI
 on:
   push:
     branches:
-      - '*'
+      - '**'
 
 jobs:
   in_decoker_test:
     name: Testes automatizados
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
-      - name: Set JDK
-        uses: actions/setup-java@v1
+      - name: Set up JDK
+        uses: actions/setup-java@v2
         with:
+          distribution: 'temurin'
           java-version: '17'
 
-      - name: Cache de deps
-        uses: actions/cache@v1
+      - name: Cache Maven dependencies
+        uses: actions/cache@v2
         with:
-          path: ~/.m2
+          path: ~/.m2/repository
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+          restore-keys: |
+            ${{ runner.os }}-m2
 
-      - name: Executar testes
+      - name: Run tests
         run: mvn -B test
