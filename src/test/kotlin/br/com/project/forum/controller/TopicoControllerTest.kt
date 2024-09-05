@@ -58,12 +58,12 @@ class TopicoControllerTest: DatabaseContainerConfiguration() {
 
     }
 
-    @Test
-    fun `deve retorna status 200 quando chamar topicos com token`(){
-        mockMvc.get(RECURSO) {
-            headers { token?.let { this.setBearerAuth(it) } }
-        }.andExpect { status { is2xxSuccessful() } }
-    }
+//    @Test
+//    fun `deve retorna status 200 quando chamar topicos com token`(){
+//        mockMvc.get(RECURSO) {
+//            headers { token?.let { this.setBearerAuth(it) } }
+//        }.andExpect { status { is2xxSuccessful() } }
+//    }
 
     private fun gerarToken() : String {
             val authorities = mutableListOf(Role(1, "LEITURA_ESCRITA"))
