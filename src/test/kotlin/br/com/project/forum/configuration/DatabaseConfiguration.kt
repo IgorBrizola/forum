@@ -14,6 +14,7 @@ abstract class DatabaseContainerConfiguration {
 
         @Container
         private val mySQLContainer = MySQLContainer<Nothing>("mysql:latest").apply {
+            withExposedPorts(3306)
             withDatabaseName("testeDB")
             withUsername("teste")
             withPassword("123456")
@@ -23,6 +24,7 @@ abstract class DatabaseContainerConfiguration {
         @Container
             private val rediscontainer = GenericContainer<Nothing>("redis:latest").apply {
             withExposedPorts(6379)
+            dependsOn(mySQLContainer)
         }
 
         @JvmStatic
