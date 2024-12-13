@@ -28,5 +28,3 @@ spring:
           auth: true
           starttls:
             enable: true
-jwt:
-  secret: secret
